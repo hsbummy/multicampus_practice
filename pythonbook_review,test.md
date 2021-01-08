@@ -253,3 +253,451 @@ if man == True:
         # 이런 구조를 말한다.
 ```
 
+# 6장. 반복문
+
+
+
+## 6-1. 반복문
+
+
+
+* while 반복문은 명령을 한 번만 실행하는 것이 아니라 조건이 만족하는 동안 계속 실행한다.
+
+```python
+while 조건:
+    명령
+    
+# ex
+student = 1
+while student <= 5:
+    print(student, "번 학생의 성적을 처리한다.")
+    student += 1
+```
+
+
+
+* for문은 컬렉션의 요소를 순서대로 반복하면서 루프의 명령을 실행하는 반복문이다.
+
+```python
+for 제어변수 in 컬렉션:
+    명령
+    
+# ex
+for student in [1,2,3,4,5]:
+    print(student, "번 학생의 성적을 처리한다.")
+    
+# 이걸 range 함수를 이용하면
+for student in range(1,6):
+    print(student, "번 학생의 성적을 처리한다.")
+# 으로 나오고 range 함수에서의 끝값은 처리되지 않는다.
+
+sum = 0
+for num in range(2,101,2):
+    sum += num
+    # 짝수의 합을 구할 수 있다. 괄호 안 마지막 수는 step
+```
+
+
+
+* 제어 변수의 활용 : 딱히 설명할 내용이 없으나 간단하게 예시를 보자면
+
+```python
+for x in range(1,6):
+    print("-" * 9, end = "")
+    print("+" , end = "")
+    
+#출력을 하면
+---------+---------+--------+ 
+# 이런식으로 나오게 된다.
+```
+
+
+
+* break : 반복을 중지하거나 현재 반복을 건너뛰어야 할 경우
+
+```python
+score = [92, 86, 68, 120, 56]
+for s in score:
+    if(s < 0 or s > 100):
+        break
+    print(s)
+```
+
+
+
+* continue : 이번 루프 하나만 건너뛰고 나머지는 계속 수행, 이건 넘어가자
+
+
+
+## 6-2. 루프의 활용
+
+
+
+* 이중 루프 : 루프끼리 중첩된 것을 말한다.
+
+```python
+# 구구단을 외자
+
+for dan in range(2,10):
+    print(dan, "단")
+    for hang in range(1,10):
+        print(dan, "*", hang, "=", dan * hang)
+```
+
+
+
+* 무한 루프 : 반복 횟수를 정하지 않고 무한히 반복하는 루프
+
+```python
+while True:
+    명령
+    if 탈출조건:
+        break
+        
+# 간단한 예시
+print("3 + 4 = ?")
+while True:
+    a = int(input("정답을 입력하시오...?"))
+    if (a == 7):
+        break
+```
+
+
+
+# 7장. 함수
+
+
+
+## 7-1. 함수와 인수
+
+* 함수는 일련의 코드 블록에 이름을 붙여 정의한 것
+
+```python
+def 함수명(인수 목록):
+    본체
+    
+# ex
+def calcsum(n):
+    sum = 0
+    for num in range(n+1):
+        sum += num
+    return sum
+
+calcsum(6) # 함수를 지정한 다음 사용이 가능
+```
+
+
+
+* 인수 : 호출원에서 함수로 전달되는 작업거리이며 호출하는 쪽과 함수를 연결한다는 의미로 매개변수라고도 한다.
+* 리턴값 : 출력값이랑 같다
+* pass 명령은 파이썬의 모든 명령 중 가장 간단하며 아무것도 하지 않는다.
+
+```python
+def calctotal():
+    pass
+#주로 함수를 만들어놓고 나중에 내용을 채울 때 사용한다고 한다.
+```
+
+
+
+## 7-2. 인수의 형식
+
+
+
+* 가변 인수 : 인수 이름 앞에 * 기호를 붙이면 자리에 여러 개의 인수가 올 수 있다.
+
+```python
+def intsum(*ints):
+    sum = 0
+    for num in ints:
+        sum += num
+    return sum
+
+print(intsum(1,2,3,4,5,6,7,8,9))
+
+# 가변 인수가 2개 이상은 안된다
+# 그리고 일반 인수랑 가변 인수는 이런 식으로
+print(s, *ints) = o
+print(*ints, s) = x
+```
+
+
+
+* 키워드 인수 : 인수의 수가 많이지면 헷갈린다.
+
+```python
+def calcstep(begin, end, step):
+    pass
+
+# 키워드 가변 인수
+def calcstep(**args):
+    begin = args["begin"]
+    end = args["end"]
+    step = args["step"]
+    
+# 총 집합
+
+def calcscore(name, *score, **option):
+    pass
+```
+
+
+
+## 7-3. 변수의 범위
+
+* 지역 변수 : 함수 내부에서 선언하는 변수
+
+```python
+def calcsum(n):
+    sum = 0				 	#지역 변수 초기화
+    for num in range(n+1):  
+        sum += num			#누적
+    return sum				#리턴
+```
+
+
+
+* 전역 변수 : 함수 바깥에서 선언하는 변수 (바깥에서 선언하거나, global 을 붙여준다.)
+* docstring : '''이거알지'''
+
+
+
+#  8장.문자열
+
+
+
+## 8-1. 문자열 분리
+
+
+
+* 첨자
+
+```python
+s = 'python'
+s[2] = ?
+t 
+# 여기서 하나 알아둘 것 바로 슬라이스
+
+print(s[2:5])
+tho
+# 이게 슬라이스다
+print(s[:2])
+print(s[2:])
+py
+thon
+print(s[-1])
+n
+```
+
+
+
+## 8-2. 문자열 메서드
+
+
+
+* 검색 : 이거는 예시 보는게 훨 빠르다
+
+```python
+s = 'python programming'
+print(len(s))
+print(s.find("o"))
+print(s.rfind("o"))
+print(s.index("r"))
+print(s.count("n"))
+18
+4
+9
+8
+2
+
+# 바로 조사도 가자
+
+print("a" in s)
+True
+
+# startswinth, endswith 특정문자열로 시작되는지, 특정 문자열로 끝나는지 확인하는 !!
+
+# 기타 : isalpha,isdecimal,isdigit ~~
+
+# 변경
+
+#lower, upper = 소문자 ,대문자
+
+# strip = 공백을 제거한다.!! , lstrip = 왼쪽 공백 제거, rstrip = 오른쪽 공백 제거
+
+# 분할
+
+# split 이거는 예시를 보자
+
+s1 = s.split(" ")
+["python","programming"]
+
+# join 문자열의 각 문자 사이에 다른 문자열을 삽입
+
+# 대체
+
+#replace, just
+
+print(s.replace("python","java"))
+java programming
+
+print(s.rjust(30))
+print(s.ljust(30))
+print(s.center(30))  # 정렬이라 생각하면 더 쉽다.
+
+```
+
+
+
+## 8-3. 포맷팅
+
+
+
+* 포맷팅
+
+```python
+# 이것도 빠르게 예시를 보자
+
+price = 500
+print("돈" +str(price) + "원" )
+print("돈", price ,"원")
+둘이 같다
+
+또는
+
+# %s, %d 정도면 도니느데 정수, 문자열인데 아마 %s는 정수 문자 둘 다 가능하다.
+
+print("%d원" % (price))
+
+# 내가 배운 방식은
+
+print("{0} 원입니다.".format(price)) 이거다
+# 아마 이게 더 많이 쓰이는 것 같다.
+```
+
+
+
+# 9장. 리스트와 튜플
+
+
+
+## 9-1. 리스트
+
+
+
+* 자료의 집합
+
+```python
+score = [10,20,30,40,50]
+print(list("korea"))
+# 슬라이스도 가능
+# 추가, 삭제 가능
+```
+
+
+
+* 이중 리스트 : 그냥 리스트 안에 리스트인데
+
+```python
+s = [[1,2,3],[2,3,4]]
+
+# print(s[1][2])
+# 4가 나옴
+```
+
+
+
+## 9-2. 리스트 관리
+
+
+
+* 여기 부분도 빠르게 예시로 보자
+
+```python
+# 삽입
+
+nums = [1,2,3,4]
+nums.append(5)
+nums.insert(2,99)
+print(nums)
+# append 는 끝에, 인서트는 2번째 위치에 99
+nums2 =[7,8]
+nums.extend(nums2)
+print(nums)
+nums = [1,2,3,4,7,8]
+# 중간식을 제외하고 이렇게 나온다.
+
+# 삭제
+nums.remove(1)
+del(list[1])
+print(nums)
+3, 4
+
+#pop 함수도 알아보자
+# 삭제라기 보다는 안에 요소를 빼내는 거다
+print(nums.pop())
+1,2,3
+
+# 검색 
+# index = 특정 요소의 위치를 찾는 , count = 특정 요소값의 개수, not, not in 있는지 없는지 검사
+
+# 정렬 
+# sort, sort(reverse=True), sorted
+```
+
+
+
+## 9-3. 튜플
+
+
+
+* 불변 자료 집합 = 튜플
+
+```python
+# 변경 삭제 불가능
+score = (10,20,30,40)
+# 변하지 않는 값을 사용할 때 좋다
+```
+
+
+
+# 10장. 사전
+
+
+
+## 10-1. 사전
+
+
+
+* 사전은 키와 값의 쌍을 저장하는 대용량의 자료구조
+
+```python
+dic = {"boy": "소년", "school" : "학교"}
+
+# 사전 관리
+
+del dic["boy"]
+dic ["girl"] ="소녀"
+결과는 예상하는대로 나온다.
+
+print(keys())
+print(values())
+print(items())
+```
+
+
+
+## 10-2. 집합
+
+
+
+* 집합은 여러 가지 값의 모임, 중복 불가
+
+```python
+asia = {"korea","china","japan"}
+asia.add("vietnam") = o
+# 중복 안되고
+asia.remove("japan") = o
+asia.update("singapore") = o
+```
+
