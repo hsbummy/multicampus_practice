@@ -84,4 +84,19 @@
 
 
 
+![8](C:\Users\morph\Pictures\8.png)
+
+
+
+* 이미지를 추가했다면, 그 이미지를 html로 불러와야 한다.
+
+```html
+/* django 문법과 html 문법 */
+{% load static %}
+
+<img src="{% static '폴더경로/사진이름.확장자' %}"
+```
+
+
+
 
