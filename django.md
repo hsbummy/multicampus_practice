@@ -82,22 +82,6 @@
 
 
 
-# HTML
 
 
 
-* HTML 기본 태그들은 이미 공부를 했으니 파일만 따로 저장해두겠다.
-
-![image_20210122_160941](C:\Users\morph\Desktop\image_20210122_160941.png)
-
-
-
-![image_20210122_160942](C:\Users\morph\Desktop\image_20210122_160942.png)
-
-
-
-![image_20210122_160945](C:\Users\morph\Desktop\image_20210122_160945.png)
-
-
-
-![image_20210122_160947](C:\Users\morph\Desktop\image_20210122_160947.png)
