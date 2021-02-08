@@ -211,3 +211,156 @@ int main(void)
 
 
 * 하드웨어에는 한계가 있다. 컴퓨터의 메모리 초과 = 오버플로우(overflow)
+
+
+
+## 3강
+
+
+
+### 컴파일링
+
+* 전처리 > 컴파일 > 어셈블 > 링크
+  * 전처리 : 실질적인 컴파일이 이루어지기 전에 무언가를 실행
+  * 컴파일 : c 코드를 어셈블리어라는 저수준 프로그래밍 언어로 컴파일 해준다.
+  * 어셈블 : 어셈블리 코드를 오브젝트 코드로 변환 , 2진수로 변환
+  * 링크 : 여러 개의 파일로 이루어져 있어 하나의 오브젝트 파일로 합쳐주는 과정
+
+
+
+### 디버깅
+
+* 오류를 찾아내는 과정을 말한다.
+* 디버깅 툴을 이용한다.
+
+
+
+### 코드의  구조화
+
+* 가독성이 좋게 코드를 구성해야 한다.
+* 또한 정확하게 구성을 해야 한다.
+
+
+
+### 배열
+
+* 각 자료형은 각각의 일정한 메모리를 차지한다.
+* 배열 = 값들의 리스트로 변수 여러개를 한 개의 변수에 저장할 수 있다.
+* 상수 - const int N = 3 (전역 변수), 변수명은 대문자로 지정해준다(관습),.
+
+
+
+```c
+float average(int length, int array[])
+{
+    int sum = 0;
+    for (int i =0; i< length; i++)
+    {
+        sum +=  array[i];
+    }
+    return sum / length;
+}
+```
+
+
+
+* 문자열과 배열
+  * string 은 문자의 수만큼 메모리를 차지한다. 그러나 문자열의 끝을 알려줘야 하므로 c 에서는 null 문자를 추가하여 글자수 +1 의 용량을 차지한다.
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    string names[4];
+    names[0] = "EMMA";
+    names[1] = "RODRIGO";
+    names[2] = "BRIAN";
+    names[3] = "DAVID";
+    
+    printf("%s\n", names[0]);
+    printf("%c%c%c%c%i\n", names[0][0], names[0][1], names[0][2], names[0][3], names[0][4]);
+}
+
+==EMMA0
+```
+
+
+
+* 문자열의 활용
+
+
+
+```c
+#include <stdio.h>
+
+
+int main(void)
+{
+    string s = get_string("Input : ");
+    printf("output: ");
+    int n = strlen(s)
+    for(int i = 0;i < n;,i++)
+    {
+        printf("%c", s[i]);
+    }
+    printf("\n");
+}
+```
+
+
+
+* 대문자로 변환하는 과정을 보여준 것인데 ASCII 코드에서 정수를 더하거나 빼서 문자열을 변형시킨다. 근데 아래 코드를 보면 상당히 복잡하다. 따라서 다른 함수를 불러와서 사용을한다.
+
+
+
+```c
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After: ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if (s[i] >= 'a' && s[i] <= 'z')
+        {
+            printf("%c", s[i] - 32);
+        }
+        else
+        {
+            printf("%c", s[i]);
+        }
+    }
+    printf("\n");
+}
+```
+
+
+
+* 명령형 인자 = 인자의 입력을 통해 
+  * argc = main 함수가 받게 될 입력의 개수
+  * argv = 그 입력이 포함되어 있는 배열
+  * argv[0] = 기본적으로 프로그램의 이름이 저장
+
+```c
+#include <stdio.h> =프로토타입 같은 함수를 불러온다.
+
+
+int main(int argc, string argv[]) = 명령형 인자.
+{
+    if (argc == 2)
+    {
+        printf("hello, %s\n", argv[1]);
+    }
+    else
+    {
+        printf("hello, world\n");
+    }
+}
+```
+
+
+
