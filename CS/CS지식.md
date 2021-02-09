@@ -364,3 +364,197 @@ int main(int argc, string argv[]) = 명령형 인자.
 
 
 
+## 4강
+
+
+
+### 검색 알고리즘
+
+* 선형 탐색 : 차례대로 하나씩 확인하는 방식
+* 이진 탐색 : 중간을 찾고 그 중간 값에서 다시 중간을 찾는 방식
+* 알고리즘 표기법
+  * Big-o 표기법 = O(n), O(log n) - 알고리즘을 푸는 데 걸리는 시간의 상한선
+  * 오메가 (omega) = 알고리즘을 푸는 데 걸리는 시간의 최소한, 최소한의 방법\
+
+
+
+### 선형 검색
+
+
+
+* 하나씩 차근차근 검색하는 방법
+
+
+
+```c
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    int numbers[6] = {4, 8, 15, 16, 23, 42};
+    
+    for (int i = 0; i < 6; i++)
+    {
+        if (number[i] == 50)
+        {
+            printf("true\n");
+        }
+    }
+    printf("false\n");
+}
+
+
+or 
+    
+    
+int main(void)
+{
+    string names[4] = {"emma", "rodrigo", "brian", "david"}
+    
+    for (int i = 0; i < 4; i++)
+    {
+        if (strcmp(names[i], "emma") == 0);
+        {
+            printf("found");
+            return 0
+        }
+    }
+    print("not found\n");
+    return 1
+}
+
+
+or 
+    
+typedef struct
+{
+    string name;
+    string number;
+}
+person
+    
+    
+int main(void)
+{
+	person people[4];
+    
+    people[0].name = "emma";
+    people[0].number = "617-555-0100";
+    
+    people[1].name = "rodrigo";
+    people[1].number = "617-555-0101";
+    
+    people[2].name = "brian";
+    people[2].number = "617-555-0102";
+    
+    people[3].name = "david";
+    people[3].number = "617-555-0103";
+    
+    for (int i = 0; i < 4; i++)
+    {
+        if(strcmp(people[i].name, "emma") == 0)
+        {
+            printf("%s\n", people[i].number)
+        }
+    }
+    print("Not found\n");
+}    
+
+```
+
+
+
+### 버블 정렬
+
+
+
+* repeat n-1 times
+  * for i from 0 to n-2
+* 영어 말고 한글로 풀어보자면 자신의 다음사람이 자신보다 크다면 가만히 있고 적으면 자리를 바꾼다.
+* Big-O = O(n^2)
+* Omega = Omege(n)
+
+
+
+### 선택 정렬
+
+
+
+* 항목 중에서 가장 작은 항목을 찾아서 첫 번째와 위치를 바꾸고 이를 반복한다. = n(n+1)/2
+* Big-O = O(n^2)
+* Omega = O(n^2)
+
+
+
+### 재귀
+
+* 재귀 함수는 자기 자신을 호출한다.
+
+```c
+#include <stdio.h>
+#include <cs50.h>
+
+void draw(int h)
+
+int main(void)
+{
+    int height = get_int("height : ");
+    
+    draw(height);
+}
+
+void draw(int h)
+{
+    for (int i = 1; i <= h; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
+            printf("#\n");
+        }
+        printf("\n");
+    }
+}
+```
+
+
+
+```c
+#include <stdio.h>
+#include <cs50.h>
+
+void draw(int h)
+
+int main(void)
+{
+    int height = get_int("height : ");
+    
+    draw(height);
+}
+
+void draw(int h)
+{	
+    if (h == 0)
+    {
+        return;
+    }
+    draw(h-1);
+    
+    for (int i = 0; i < h; i++)
+    {
+        printf("#");
+    }
+    print("\n")
+}
+```
+
+
+
+### 병합 정렬
+
+* 원소가 한 개가 될 때까지 계속해서 반으로 나누다가 다시 합쳐나가며 정렬을 하는 방식
+
+* Big-O = O(n * log n)
+* Omega = Omega(n * log n)
+* Theta = 상한선과 하한선이 같을 때 사용하다.
+
