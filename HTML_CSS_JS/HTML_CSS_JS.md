@@ -395,3 +395,214 @@ for 값을 주게되면 클릭했을 때 동작하게 된다.
   * method = 데이터를 전송하는 방식을 지정 (get, post)
     * get = 민감한 정보를 다룰 때에는 사용하지 않는다.
     * post = 반대
+
+
+
+## 컨텐츠 모델
+
+
+
+* 컨텐츠 모델 : 가지고 있는 성격에 따라 요소를 구분 시켜놓은 것
+  * METADATA : 콘텐츠의 스타일, 스크립트를 설정 하거나 다른 문서와의 관계 등의 정보를 포함하는 요소 (주로 head 태그)
+  * FLOW : 문서에 사용되는 대부분의 요소 (태그의 대부분)
+  * SECTIONING : 헤딩과 푸터의 범위를 결정 하는 요소
+  * HEADING : 섹션의 헤더를 정의하는 요소
+  * PHRASING : 문서의 텍스트이며 문단 내부 레벨로 마크업 하는 요소
+  * EMBEDDED : 이미지, 비디오, 플래시 등 외부 콘텐츠를 문서내에 표시하는 요소
+  * INTERACTIVE : 사용자와 상호작용을 하는 요소
+* 시멘틱 : 의미론적인 마크업? = 기계가 잘 이해할 수 있는 코드
+  * 의미에 맞는 요소를 사용
+  * 문서의 구조화
+  * 인간과 기계가 모두 이해할 수 있는 것이 목표
+* BLOCK & INLINE LEVEL
+  * BLOCK : 한 줄에 하나의 요소 표시
+  * INLINE : 한 줄에 여러개의 요소 표시
+  * 인라인 레벨 요소는 블록 레벨요소를 품을 수 없다.
+
+
+
+# CSS
+
+* CASCADING STYLE SHEETS = HTML 을 꾸며주는 언어
+* CSS는 HTML을 보기 좋게 디자인 하는 역할
+
+
+
+## CSS 문법
+
+* 선택자 
+* 속성 
+* 값
+* 선언
+* 선언부
+* 규칙
+* 주석 = /* 주석 */
+
+
+
+## CSS 적용방식
+
+* INLINE
+
+```css
+<p style="color: gray;"></p>
+```
+
+
+
+* INTERNAL
+
+```css
+<style>
+	p{
+    	color:gray;
+	}
+</style>
+```
+
+
+
+* External
+
+```css
+<link rel="stylesheet" href="css의경로">
+```
+
+
+
+## 선택자
+
+
+
+* 요소 선택자 : 선택자의 부분에 태그가 들어간다. 그룹화가 가능 (* = 전체 선택자, 사용 지양)
+
+* class 선택자 : class 라는 속성을 부여해 선택자를 지정한다. "."를 앞에 찍어주고 클래스명을 적어준다. 다중 클래스 지정이 가능하다.
+* id 선택자 : id 속성을 선택자로 지정한다. 앞 "#"을 붙여주고 사용한다.
+  * 둘의 차이점 : id 는 문서내에 유일하게 사용이 되어야 한다.
+
+```html
+<style>
+    .html{
+        color: purple:
+    }
+    .css{
+        text-decoration: underline;
+    }
+    #face{
+        color:gray;
+    }
+</style>
+<dl>
+    <dt class="html">HTML</dt>
+    <dd><span class="html">html</span></dd>
+    <dt class="css">css</dt>
+    <dd><span class="css">css</span></dd>
+    <dt class "html css">js<dt>
+    <dd id="face">니얼</dd>
+</dl>
+```
+
+
+
+* 선택자의 조합
+  * 요소와 클래스의 조합
+  * 다중 클래스
+  * 아이디와 클래스의 조합
+
+```html
+<style>
+    .html{
+        color: purple:
+    }
+    .css{
+        text-decoration: underline;
+    }
+    #face{
+        color:gray;
+    }
+    .html.css{
+        border: 1px solid;
+    }
+</style>
+<dl>
+    <dt class="html">HTML</dt>
+    <dd><span class="html">html</span></dd>
+    <dt class="css">css</dt>
+    <dd><span class="css">css</span></dd>
+    <dt class "html css">js<dt>
+    <dd id="face">니얼</dd>
+</dl>
+```
+
+
+
+* 속성 선택자
+  * 단순 속성으로 선택 = p[class] 이런식으로도 사용이 가능하다. 처음 알았다.
+  * 정확한 속성값으로 선택 = p[class="클래스명"]
+  * 부분 속성값으로 선택
+    * [class~="클래스명"] - class 속성의 값이 공백으로 구분한 "클래스명" 단어가 포함되는 요소 선택
+    * [class^="클래스명"] - class 속성의 값이 "클래스명" 로 시작하는 요소 선택
+    * [class$="클래스명"] - class 속성의 값이 "클래스명" 로 끝나는 요소 선택
+    * [class*="클래스명"] - class 속성의 값이 "클래스명" 문자가 포함되는 요소 선택
+
+
+
+* 문서 구조 관련 선택자
+  * 부모와 자식 관계 이해하기 , 조상과 자손 요소, 형제 요소
+* 문서 구조를 이용한 선택자
+  * 자손 선택자 = div span { color:red; }
+  * 자식 선택자 = div > span { color:red; } 
+  * 인접 형제 선택자 = div + span { color:red; }
+
+* 가상 선택자 = 문서에 존재하지 않는 요소에 성격을 부여
+  * 가상 클래스 - 미리 정의해놓은 상황에 적용이 되도록 약속되어있는 보이지 않는 클래스 = :pseudo-class{ property: value; }
+    * 문서 구조와 관련된 가상 클래스
+      * :first-child : 첫 번째 자식 요소 선택
+      * :last-child : 마지막 자식 요소 선택
+    * 링크 관련된 가상 클래스
+      * :link : 하이퍼링크이면서 아직 방문하지 않은 앵커
+      * :visited : 이미 방문한 하이퍼링크를 앵커
+    * 사용자 동작 관련 클래스
+      * :focus : 현재 입력 포커스를 갖고 있는 요소에 적용
+      * :hover : 마우스 포인터가 위치해 있는 요소에 적용
+      * :active : 사용자 입력에 의해 활성화된 요소에 적용
+  * 가상 요소 - 미리 정의해놓은 위치에 삽입이 되도록 약속되어있는 보이지 않는 요소
+    * :before : 가장 앞에 요소를 삽입
+    * :after : 가장 뒤에 요소를 삽입
+    * :first-line : 요소의 첫 번째 줄에 있는 텍스트
+    * :first-letter : 블록 레벨 요소의 첫 번째 문자
+
+
+
+## 구체성
+
+* 선택자를 얼마나 명시적으로 선언했느냐를 수치화 한 것
+  1. id 0,1,0,0
+  2. class, 기타속성, 가상 클래스0,0,1,0
+  3. 선택자에 있는 모든 요소, 가상 요소 0,0,0,1
+  4. 전체 선택자는 0,0,0,0 
+  5. 인라인 스타일 : 1,0,0,0
+  6. !important = 모든 구체성을 무시하고 우선권을 갖는다.
+
+
+
+## 상속
+
+* 박스 모델 속성들은 상속되지 않는다.
+* 상속된 값의 구체성은 아무런 값을 갖지 못한다.
+
+
+
+## 캐스케이딩
+
+* 중요도 & 출처
+  * 기본적으로 !important로 선언된 모든 규칙은 그렇지 않은 규칙보다 우선한다.
+  * 출처는 제작자, 사용자, 사용자 에이전트로 구분한다.
+    * 우선 순위
+      1. 사용자 !important 스타일
+      2. 제작자 !important 스타일
+      3. 제작자 스타일
+      4. 사용자 스타일
+      5. 사용자 에이전트 스타일
+* 구체성
+* 선언 순서 - 나중에 선언한 스타일이 우선한다.
