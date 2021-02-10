@@ -606,3 +606,119 @@ for 값을 주게되면 클릭했을 때 동작하게 된다.
       5. 사용자 에이전트 스타일
 * 구체성
 * 선언 순서 - 나중에 선언한 스타일이 우선한다.
+
+
+
+## 단위
+
+* 절대길이
+  * px - pixel
+  * pt - points
+* 상대길이
+  * % - percentage
+  * em - font size of the element
+  * rem - font size of the root element
+  * vw
+
+
+
+## 색상
+
+* COLOR
+  * 색상명으로 선언
+  * 16진수 법으로 선언 (RGB = #00 00 00 ), EX. #ff0000
+  * RGB 값으로 선언 - 0 에 가까울수록 검정색이다.
+  * RGBA 값으로 선언 A=는 알파값으로 투명도를 설정 (0~1 사이로 설정)
+
+
+
+## 배경
+
+* BACKGROUND
+  * background-color: 배경색상
+  * background-image: url(경로)
+  * background-repeat: repeat-x, repeat-y, no-repeat
+  * background-position : left top, left bottom~~~~왼쪽이 x축, 오른쪽 값이 y축
+  * background-attachment : 뒤에 배경이 고정적으로 나오게 할 것인지, 플렉스하게 움직이게 할 것인지
+  * 여러개를 동시에 선언 가능
+
+
+
+## 박스 모델
+
+* box model
+  * content = 요소
+  * padding = 컨텐츠의 보더 사이의 영역 (안쪽 여백)
+  * border = 테두리
+  * margin = 바깥의 영역
+* border
+  * border-width = 두께
+  * border-style = 스타일
+  * border-color = 테두리 색상
+  * 이것도 한번에 설정 가능
+* padding
+  * 안쪽 여백
+  * top , right, bottom, left 순으로 설정 가능
+* margin
+  * 바깥 여백
+  * auto 선언 가능, 정렬을 할 때 많이 사용이 된다. + width 값을 기준으로 하기 때문에 width는 필수다.
+  * margin collaps :margin 값이 충돌할때는 큰 값을 사용한다.
+* margin, padding
+
+
+
+|         | +    | -    | auto | 단위    |
+| ------- | ---- | ---- | ---- | ------- |
+| margin  | o    | o    | o    | px ,  % |
+| padding | o    | x    | x    | px , %  |
+
+
+
+* width = 요소의 가로값을 결정
+  * auto = 기본값
+  * % 
+  * px
+  * 자식요소는 부모의 값에 영향을 받는다.
+* height = 요소의 높이값을 결정
+  * auto = 기본값
+  * px
+  * % 
+* width, height = padding, margin을 포함한 값으로 계산하기 때문에 박스를 잘 계산해야 한다.
+
+
+
+
+
+## 폰트
+
+* 소문자 x 를 기준으로 밑에는 디센더, 위에는 어센더라고 한다.
+
+
+
+* 폰트 패밀리
+  * font-family : 지정순서로 폰트의 우선순위 결정
+  * generic-family : family-name 으로 지정한 폰트가 사용자의 컴퓨터에 없을 시 적절한 폰트를 선택할 수 있도록 함, sans-serif;
+* LINE-HEIGHT = 줄 간격
+  * 숫자만 입력 가능하다. 폰트 사이즈와 상대적으로 반응한다. px로 했을 때는 고정값으로 들어간다.
+  * 2; , 20px; , 20%; , normal
+
+* FONT-SIZE : 글꼴 크기
+  * 기본 값 미지정 시 글꼴의 기본크기는 16px
+* FONT-WEIGHT : 글꼴 굵기
+  * bolder, lighter = 부모의 값을 상속받기 때문에 지양하는 편이다.
+* FONT-STYLE : 글꼴 스타일 지정
+  * normal, italic, oblique
+* FONT-VARIANT : 소문자를 작은 대문자 형태로 표현 - small-caps
+* FONT : 실무에서는 지양했지만, 글꼴 속성의 축약형
+* 웹 폰트 - 시스템 폰트, 이미지 폰트, 웹 폰트
+  * 사용자의 로컬환경에 글꼴을 다운로드 받아 적용
+* VERTICAL-ALIGN : 수직 정렬
+* TEXT-ALIGN : 수평 정렬 - 블록 요소안에 인라인 레벨요소에 적용
+* TEXT-INDENT : 텍스트 들여쓰기
+* TEXT-DECORATION : 텍스트 장식
+* 단어 관련 속성
+  * white-space : 공백 관련 속성 -nowrap
+  * letter-spacing : 자간
+  * word-spacing : 단어 간 간격
+  * word-break : 단어를 어디서 자를지에 대한 속성
+  * word-wrap : 영역 바깥으로 나갈것을 어떻게 조정할지, 안으로 넣을지에 대한 속성
