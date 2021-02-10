@@ -553,8 +553,280 @@ void draw(int h)
 ### 병합 정렬
 
 * 원소가 한 개가 될 때까지 계속해서 반으로 나누다가 다시 합쳐나가며 정렬을 하는 방식
-
 * Big-O = O(n * log n)
 * Omega = Omega(n * log n)
 * Theta = 상한선과 하한선이 같을 때 사용하다.
+
+
+
+## 5강
+
+
+
+### 메모리
+
+* 16진수 : 0~9, A~F 으로 16 진수를 표현한다.
+  * 0x 을 앞에 붙혀줌으로써 16진수를 구분한다.
+
+
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int i = 50;
+    printf("%p\n", &n); & = 주소를 부르고, 주소를 출력하는 문법, * = 주소로 이동
+}
+
+int main(void)
+{
+    int i = 50;
+    printf("%i\n", *&n); & = 주소를 부르고, 주소를 출력하는 문법, * = 주소로 이동
+}
+```
+
+
+
+* 예제 : CS50을 16진수로 표현
+  * C : 0x43
+  * S : 0x53
+  * 5 : 0x35
+  * 0 : 0x30
+
+
+
+* 포인터
+
+
+
+* 변수의 주소를 저장하는 것을 말한다.
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int i = 50;
+    int *p = &n; = int의 주소를 알려준다
+    printf("%p\n", p);
+}
+```
+
+
+
+* 문자열
+  * 문자열의 char의 첫 번째 주소를 알려주는 것이다. 즉 
+
+```c
+string s = "EMMA" 라고 한다면
+    
+    왜 그러냐 하면 사실 문자열이라는 것은 없다. 그저 포인터(S)가
+    "E"의 주소를 저장하고 있고 이를 순환하고 NULL 종단문자가 있는 곳에서 멈춘다.
+    
+char *s = "EMMA" 인것이다.
+    
+    
+#include <stdio.h>
+    
+int main(void)
+{
+    char *s = "EMMA";
+    printf("%s\n", s);
+    printf("%p\n", s);
+    printf("%p\n", &[0])
+}
+
+
+int main(void)
+{
+    char *s = "EMMA";
+    printf("%c\n", *s); = "E"
+    printf("%c\n", *(s+1)); = "M"
+    printf("%c\n", *(s+2)); = "M"
+    printf("%c\n", *(s+3)); = "A"
+}
+```
+
+
+
+* 문자열의 비교
+
+
+
+```c
+#include <stdio.h>
+
+
+int main(void)
+{
+    char *s = get_string("s: ");
+    char *t = get_string("t: ");
+    
+    printf("%p\n", s);
+    printf("%p\n", t);
+}
+```
+
+
+
+* 문자열 복사
+
+
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    char *s = get_string("s: ");
+    char *t = s;
+    
+	t[0] = toupper(t[0]);
+    
+    printf("%s\n", s);
+    printf("%s\n", t);
+}
+
+int main(void)
+{
+    char *s = get_string("s: ");
+    
+    char *t = malloc(strlen(s)+1);
+    
+    for (int i=0, n = strlen(S); i <= n; i++)
+    {
+        t[i] = s[i]
+    }
+    
+    t[0] = toupper(t[0]);
+    
+    printf("%s\n", s);
+    printf("%s\n", t);
+}
+
+int main(void)
+{
+    char *s = get_string("s: ");
+    
+    char *t = malloc(strlen(s)+1); = 메모리를 할당하는 함수
+    
+ 	strcpy(t, s);
+    
+    t[0] = toupper(t[0]);
+    
+    printf("%s\n", s);
+    printf("%s\n", t);
+}
+```
+
+
+
+* 메모리 누수 = malloc 같은 함수를 계속 사용하다보면 메모리가 누적되고 그렇게 되면 메모리가 가득 차게 된다.
+  * free 라는 함수를 통해서 변수를 초기화 시켜준다. 메모리를 초기화 시켜준다.
+  * 10개의 메모리에서 11개의 자리에다가 값을 저장하면 버퍼 오버플로우가 발생한다.
+* 메모리 교환
+
+
+
+```c
+void swap(int a, int b)
+{
+    int tmp = a;
+    a = b;
+    b = tmp;
+} >>> 동작 x
+    
+#include <stdio.h>
+
+int main(void)
+    
+```
+
+
+
+* 힙 : 메모리를 할당 받을 수 있는 영역 - 힙 오버플로우
+* 스택 : 함수가 호출될 때 지역 변수가 쌓이는 곳 - 스택 오버플로우
+
+
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    int x;
+    printf("x: ");
+    scanf("%i", &x);
+    printf("x : %i\n", x)
+}
+```
+
+
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+	char s[5];
+    printf("s: ");
+    scanf("%s", s);
+    printf("s: %s\n", s)
+}
+```
+
+
+
+```c
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+	FILE *file = fopen("phonebook.csv", "a");
+    
+    char *name = get_string("Name: ");
+    char *number= get_string("Number: ");
+    
+    fprintf(file, "%s,%s\n", name, number);
+}
+```
+
+
+
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
+        return 1;
+    }
+    
+    FILE *file = fopen(argv[1], "r");
+    if (file == NULL)
+    {
+        return 1;
+    }
+    
+    unsigned char bytes[3];
+    fread(bytes, 3, 1, file);
+    
+    if (bytes[0] == 0xff &&  bytes[1] == 0xd8 && bytes[2] == 0xff)
+    {
+        printf("Maybe\n");
+    }
+    else
+    {
+        printf("No\n");
+    }
+}
+```
+
+
+
+
 
