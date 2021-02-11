@@ -828,5 +828,139 @@ int main(int argc, char *argv[])
 
 
 
+## 6강
 
 
+
+### 자료구조
+
+* insert = O(n) , search = O(log n)
+
+
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    int list[3];
+
+    list[0] = 1;
+    list[1] = 2;
+    list[2] = 3;
+
+    for (int i = 0; i < 3 ; i++)
+    {
+        printf("%i\n", list[i]);
+    }
+}
+= 동적인 코드가 아니다
+    
+int main(void)
+{
+    int *list = malloc(3 * sizeof(int));
+    if (list == NULL)
+    {
+        return 1;
+    }
+
+    list[0] = 1;
+    list[1] = 2;
+    list[2] = 3;
+    
+    int *tmp = realloc(4 * size(int));
+    if (tmp == NULL)
+    {
+        return 1;
+    }
+	
+    list = tmp;
+    
+    tmp[3] = 4;
+    
+
+
+    for (int i = 0; i < 4 ; i++)
+    {
+        printf("%i\n", list[i]);
+    }
+} = 더 쉬운 코드로 짜보자
+
+realloc 을 이용한다.
+```
+
+
+
+### 연결 리스트
+
+
+
+* search, insert  = O(n)
+
+```c
+typedef struct node
+{
+    int number;
+    struct node *next
+    
+}
+node;
+
+=노드란 메모리의 영역을 직사각형으로 이루어진 뭐 그런것들
+    
+```
+
+
+
+* 연결리스트란 흩어져 있는 메모리에다가 바로 다음에  추가 메모리를 설정해 주고 포인터를 지정해줌으로써 다른 데이터와 연결을 해준다.
+  * 따라서 새로운 자료를 추가할 때 상당히 간편하다.
+
+
+
+```c
+node *list = NULL;
+
+node *n = malloc(sizeof(node));
+(*n).number = 2;
+	= n -> number = 2;
+
+if (n != NULL)
+{
+    n -> number = 2;
+    n -> next
+}
+node *tmp = list;
+while (tmp -> next != NULL)
+{
+    tmp = tmp
+}
+// 이것은 뭔가 잘못된 코드인데 즉 메모리 누수가 나는 코드이다.//
+
+
+```
+
+
+
+* 트리
+  * 이진 탐색 트리 = 왼쪽이 더 작고 오른쪽이 더 크다.  O(n), Omega(1)
+
+
+
+### 해시 테이블
+
+* 배열과 연결 리스트를 조합한 것 =  O(1), O(n)
+
+
+
+### 트라이
+
+* 어떤 자원 절약하기 위해 다른 자원을 소비하는 패턴 = O(1),  많은 양의 메모리를 사용한다.
+
+
+
+### 그 외 자료구조
+
+* 큐 = 줄 서기, 선입 선출의 특징을 가진 자료 구조 = 엔큐, 디큐 - 엔큐는 들어가는 것, 디큐는 나오는 것
+* 스택 = 후입선출의 방식 = 푸시와 팝
+* 딕셔너리 = 해시 테이블과 거의 같은 구조의 자료구조

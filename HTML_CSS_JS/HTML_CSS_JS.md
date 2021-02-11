@@ -722,3 +722,154 @@ for 값을 주게되면 클릭했을 때 동작하게 된다.
   * word-spacing : 단어 간 간격
   * word-break : 단어를 어디서 자를지에 대한 속성
   * word-wrap : 영역 바깥으로 나갈것을 어떻게 조정할지, 안으로 넣을지에 대한 속성
+
+
+
+## 레이아웃
+
+* display : 요소의 렌더링 박스 유형을 결정 - inline, block, inline-block = 배치는 inline 처럼 된다, none ...
+
+| display      | width | height | margin | padding | border |
+| ------------ | ----- | ------ | ------ | ------- | ------ |
+| block        | o     | o      | o      | o       | o      |
+| inline       | x     | x      | 좌/우  | 좌/우   | 좌/우  |
+| inline-block | o     | o      | o      | o       | o      |
+
+
+
+* visibility = 요소를 어떻게 숨길 것인지 결저
+  * visible = 기본
+  * hidden = 숨김 , 해당 element의 영역을 유지
+  * collapse = 테이블 태그에서만 적용 (익스플로러, 파폭에서만 적용)
+
+* float =요소를 보통의 흐름에서 벗어나게 함, 주변 텍스트나 인라인요소가 주위를 감싸는 특징이 있음, 대부분의 요소에 display 값을 block 으로 변경함
+  * none = 기본값
+  * left 
+  * right 
+
+* clear = floating 된 요소의 영향에서 벗어나 다음 행으로 이동 , block-level 요소만 적용가능
+* position = 요소의 위치를 원하는 곳으로 이동 시킬 때 사용
+  * top, right , bottom, left = offset 값
+  * static = 기본 값 , 좌표설정 안됨
+  * relative = 관계적인 값
+  * absolute = 절대적인 위치로 갖는다. 블록 요소가 된다. 부모 요소를 기준으로 한다.
+  * fixed = 고정위치 , 브라우저의 좌표값을 기준으로 고정되어있다. 부모요소를 무시한다.
+
+* z- index = 박스가 겹치는 순서를 지정, position 값이 static이 아닌 경우 지정 가능, 순서값이 없을 경우 생성순서에 따라 쌓임, 부모가 z-index 값이 있을 경우 부모안에서만 의미있음, 큰 값이 가장 위쪽, 음수 사용 가능
+  * auto : 기본값 
+  * 나머지는 숫자로 지정
+
+
+
+# 미디어 쿼리
+
+
+
+## 미디어 쿼리
+
+* 각 미디어 매체에 따라 다른 스타일 시트를 적용할 수 있게 만드는 것
+
+
+
+## 미디어 쿼리 구문
+
+* @media(media queries){...} = 쿼리문 참이냐, 거짓이냐
+  * 미디어 타입 = 미디어 매체 - all, print, screen
+  * 미디어 특성 = 미디어 타입을 더 세분화 한 것 - width, orientation
+
+```html
+표현식
+
+S* = 공백 표시
+[] = 있을 수도 OR 없을 수도
+| = A OR B
+? : 0 OR 1
+* : 0 OR 1 OR N
+
+
+media_query_list
+	: S* [media_quert [',' S* media query] *]?
+media_query
+	: [ONLY | NOT]? S* media_type S* [AND S* expression]*
+	| expression [AND S* expression] *
+expression
+	: '(' S* media_feature S* [':' S* expr]? ')' S*
+
+1. 여러 개의 미디어 쿼리로 이루어진 리스트로 작성할 수 있다.
+2. 미디어 타입 또는 표현식 단독으로도 작성할 수 있다.
+3. 표현식은 값이 없이 특성 이름만으로 작성할 수 있다.
+```
+
+
+
+
+
+* @media screen{...}
+  * 미디어 타입이 screen 이면 적용
+* @media screen and (min-width:768 px){...}
+  * width = 길이
+  * orientation = 세로 : portrait, 가로: landscape
+  * 미디어 타입 screen 이고 width 가 768px 이상이면 적요
+* @media(min-widht: 768px) and (max-width: 1024px){...}
+  * and는 연결된 모든 표현식이 참이어야 적용
+* @media(color-index)
+  * 미디어 장치가 color-index를 지원하면 적용
+* @media screen and (min-width: 768px), screen and(orientation:portrait),..
+  * 쉼표로 연결된 미디어 쿼리 중 하나라도 참이면 적용
+* @media not screen and (min-width:768px)
+  * not 키워드는 하나의 media_query 전체를 부정
+
+
+
+* 선언 방법
+  * 1. @media
+    2. <link media="">
+    3. @import
+
+## 실습
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>Media Queries</title>
+        <style>
+            /* 백그라운드 컬러 변경 */
+            /*@media screen and (max-width: 767px) {
+                body { background-color: goldenrod;}
+            }
+            @media screen and (min-width: 768px) and (max-width: 1024px) {
+                body { background-color: lightblue;}
+            }
+            @media screen and (min-width: 1025px) {
+                body { background-color: lightcoral;}
+            }*/
+            body{
+                background-color: gold;
+            }
+            @media screen and (min-width: 768px) and (max-width: 1024px) {
+                body {background-color: lightblue;}
+            }
+            /* 페이지 인쇄하는 경우의 스타일 추가*/
+            @media print{
+                a { text-decoration: none;}
+                a::after{
+                    display: inline;
+                    content: "("attr(href)")";
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            w3c는<a href="https://www.w3.org/TR/css3-mediaqueries">CSS3 미디어쿼리 문서</a>를 제정하였다.
+        </p>
+        <P>
+            또한 어쩌구저쩌구
+            <a href="https://www.w3.org/TR/css3-mediaqueries">레벨4</a>권고안
+        </P>
+    </body>
+</html>
+```
+
