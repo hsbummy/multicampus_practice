@@ -882,3 +882,70 @@ expression
 
 
 ## js란?
+
+
+
+* 사용자와 상호작용하면서 동적으로 움직이게 하는 프로그래밍 언어
+
+* <body>
+      <script> 태그를 이용해서 js를 사용한다.
+  		
+      </script>
+  </body>
+
+* 이벤트 핸들러
+
+```html
+<input type="button" value="hi" onclick="alert('hi')">
+<input type="text" onchange="alert('changed')">
+<input type="button" onkeydown="alert('key down!')">
+<input type="button" value="warning" onmouseover="alert('warning')">
+```
+
+
+
+* console (콘솔)
+  * 개발자 도구를 이용해서 javascript 를 실행할 수 있다.
+
+```javascript
+alert('kljwlkjflk'.length)
+```
+
+
+
+## 데이터 타입
+
+* 문자열
+  * " ", ' ' 로 끝낸다
+* 숫자 - 사칙연산이 가능하다.
+  * +, -, *, / - 산술 연산자
+  * 이항 연산자
+  *  =  - 대입 연산자
+
+
+
+## 변수
+
+
+
+* 변수와 상수
+* 정보의 수정이 편리하다.
+
+
+
+## 웹 브라우저 제어
+
+
+
+* css 를 통해 스타일 속성을 줄 수 있으며, 또한 javascript를 이용해서도 줄 수 있다.
+
+
+
+```html
+<input type="button" value="night" onclick="document.querySelector('body').style.backgroundColor='black';"
+```
+
+
+
+
+
