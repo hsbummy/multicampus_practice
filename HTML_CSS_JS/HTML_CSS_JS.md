@@ -891,8 +891,9 @@ expression
       <script> 태그를 이용해서 js를 사용한다.
   		
       </script>
-  </body>
-
+  
+</body>
+  
 * 이벤트 핸들러
 
 ```html
@@ -947,5 +948,181 @@ alert('kljwlkjflk'.length)
 
 
 
+## program, programming, programmer
 
+* 시간의 순서에 따라 프로그램을 진행시키는 것, 즉 순서가 있어야 프로그램 언어라고 할 수 있다.
+* HTML은 프로그램 언어가 아닌데, 왜냐하면 순서가 없기 때문이다.
+
+
+
+## 조건문
+
+* 조건에 따라 프로그램을 다르게 실행시키는 것
+
+```html
+<script>
+	document.write(1===1); boolean 표현
+</script>
+
+<script>
+	<, > 
+</script>
+
+
+비교연산자
+```
+
+
+
+* html 에서 < , >  을 표현할 때 쓰는 방법
+  * < - &lt, > - &gt
+
+
+
+```html
+<script>
+	document.write("1<br>");
+    if(false){
+       document.write("2<br>");
+       }else{
+           document.write("3<br>");
+       }
+</script>
+
+<script>
+	document.write("1<br>");
+    if(true){
+       document.write("2<br>");
+       }else{
+           document.write("3<br>");
+       }
+</script>
+```
+
+
+
+```html
+<input id="night_day" type="button" value="night">
+if(document.querySelector('#night_day').value==='night'){
+	document.querySelector('body').style.backgroundColor='black';
+	document.querySelector('body').style.color='white';
+	document.querySelector('#night_day').value='day';
+}
+else{
+	document.querySelector('body').style.backgroundColor='white';
+	document.querySelector('body').style.color='black';
+	document.querySelector('#night_day').value='night';
+}
+```
+
+
+
+## 리팩토링
+
+* 코딩의 비효율성을 개선하는 과정, 중복제거, 가독성 올리기
+
+
+
+```html
+<input id="night_day2" type="button" value="night" onclick="
+if(this.value==='night'){
+	var target= document.querySelector('body')	
+                                                             			                     target.style.backgroundColor='black';
+	target.style.color='white';
+	this.value='day';
+}
+else{
+	target.style.backgroundColor='white';
+	target.style.color='black';
+	this.value='night';
+}
+">
+
+
+```
+
+
+
+* this 를 통해 코드를 간결하게 만들기.
+* 변수를 설정하기
+
+
+
+## 반복문
+
+
+
+### 배열
+
+```html
+<script>
+	var name = ["han","sang","beom"];
+    document.write(name[0]);
+    document.write(name[1]);
+    document.write(name[2]);
+    document.write(name.length); - 갯수
+    name.push("jjang"); -추가
+    name.splice(0, 1); - 삭제 (0번째 인덱스에서 1개 아이템 삭제)
+    name.splice(0, 1, "moon") - (0번째 인덱스에서 1개 아이템 삭제 후 moon을 추가)
+</script>
+```
+
+
+
+```html
+<script>
+	documnet.write('<li>1</li>');
+    var i = 0;
+    while(i < 3){
+        documnet.write('<li>2</li>');
+        documnet.write('<li>3</li>');
+    	i = i+1;
+          }
+    documnet.write('<li>4</li>');
+</script>
+```
+
+
+
+## 배열과 반복문
+
+
+
+```html
+<script>
+	var name = ["h", "b", "c", "a"];
+    var i = 0;
+    while(i < name.length){
+        document.write('<li>' +name[i]+ '</li>');
+    	i = i+1;
+          }
+</script>
+
+예제
+<ol>
+    <script>
+        var fruits = ["apple", "banana", "coconut"]
+        var i = 0;
+        while(i < fruits.length){
+            document.write('<li>'+fruits[i]+'</li>');
+            i = i+1
+            }
+    </script>
+</ol>
+```
+
+
+
+## 배열과 반복문 응용
+
+```html
+<script>
+	var alist = document.querySelectorAll('a');
+    var i = 0;
+    while(i < alist.length){
+        alist[i].style.color = 'powderblue';
+        i++;
+    }
+</script>
+```
 
