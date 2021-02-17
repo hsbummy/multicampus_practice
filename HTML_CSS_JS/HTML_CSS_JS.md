@@ -1349,3 +1349,10 @@ BodySetColor('white')
   * 사용자들이 시스템을 제어하기 위해서 조작하는 장치
 * API : Application Programming Interface
   * 웹 브라우저가 가지고 있는 기능을 프로그래밍 언어를 통해 사용하는 것(개발자)
+
+
+
+### 번외
+
+* DOM : document object ... 문서객체
+* ajax, cookie
