@@ -1066,3 +1066,33 @@ while (tmp -> next != NULL)
 
 * CPU 스케줄링 -  메모리 관리 - 파일 관리 - 입출력 관리 - 프로세스 관리
 
+
+
+## 2강
+
+
+
+### System structure
+
+* CPU - Memory - I/O device
+  * interrupt, timer, os
+  * os 와 cpu 의 관계 
+  * interrupt 를 거는 이유
+  * timer 가 있는 이유
+* mode bit
+  * 1 사용자 모드 : 사용자 프로그램 수행
+  * 0 모니터 모드 : OS 코드 수행
+* timer
+  * 정해진 시간이 흐른 뒤 운영체제에게 제어권이 넘어가도록 인터럽트를 발생시킴
+* device controller
+  * 해당 I/O 장치유형을 관리하는 일종의 작은 CPU > hardware
+* device driver
+  * OS코드 중 각 장치별 처리루틴 > software
+* DMA controller
+  * 직접 메모리를 접근할 수 있는 컨트롤러
+* 인터럽트(interrupt)
+  * 하드웨어 인터럽트 : 하드웨어가 일으킨 인터럽트
+* 인터럽트 벡터
+  * 해당 인터럽트의 처리 루틴 주소를 가지고 있음
+* 인터럽트 처리 루틴
+  * 

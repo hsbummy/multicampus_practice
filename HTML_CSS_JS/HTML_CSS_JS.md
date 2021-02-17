@@ -892,8 +892,9 @@ expression
   		
       </script>
   
+
 </body>
-  
+
 * 이벤트 핸들러
 
 ```html
@@ -1126,3 +1127,225 @@ else{
 </script>
 ```
 
+
+
+## 함수
+
+* 코드를 더 효율적으로 사용하기 위한 문법(function)
+
+```html
+<script>
+    function two(){
+        document.write('<li>2-1</li>');
+    	document.write('<li>2-3</li>');
+    }
+	document.write('<li>1</li>');
+    document.write('<li>2-1</li>');
+    document.write('<li>2-3</li>');
+    two();
+</script>
+```
+
+
+
+### 매개변수와 인자
+
+```html
+<script>
+    function two(){
+        document.write('<li>2-1</li>');
+    	document.write('<li>2-3</li>');
+    }
+	document.write('<li>1</li>');
+    document.write('<li>2-1</li>');
+    document.write('<li>2-3</li>');
+    two();
+</script>
+
+<script>
+	function onePlusOne(){
+        document.write(1+1);
+    }
+    function sum(left, right){
+        document.write(left + right+'<br>');
+    }
+    onePlusOne();
+    sum(2,3);
+</script>
+```
+
+
+
+### 리턴
+
+* 다양한 용도로 함수를 사용이 가능하다.
+
+```html
+<script>
+	function sum(left, right){
+        return left + right;
+    };
+    document.write(sum(2,3) + '<br>');
+</script>
+```
+
+
+
+## 객체
+
+
+
+* 서로 연관된 함수와 서로 연관된 변수를 그룹핑 하여 처리하는 것
+
+
+
+```html
+<script>
+    
+	function LinksSetColor(color){
+        var alist = document.querySelectorAll('a');
+        var i = 0;
+        while(i < alist.length){
+            alist[i].style.color = color;
+            i = i + 1;
+        }
+    };
+    fuction BodySetColor(color){
+        document.querySelector('body').style.color = color;
+    };
+</script>
+
+setColor('black')
+BodySetColor('white')
+```
+
+
+
+### 객체(읽기, 쓰기)
+
+```html
+<script>
+	var coworkers = {
+      "programmer" : "sangbeom",
+        "designer" : "han"
+    };
+    document.write("programmer" : "+coworkers.programmer+"<br>");
+    coworkers.bookkeeper = "park"
+    coworkers["data scientist"] = "kim"; > 띄어쓰기를 사용할 때
+</script>
+
+
+예제
+
+<scripit>
+	var countries = {
+    	"asia" : "korea",
+    	"europe" : "england"
+    };
+    contries.except = "china"
+</scripit>
+
+<script>
+	var countries = {};
+    countries.asia = "korea";
+    countries["europe"] = "england"
+    
+    for(var key in countries){
+        document.write(key+"<br>");
+    };
+</script>
+```
+
+
+
+### 객체 순회
+
+```html
+<script>
+	var coworkers = {
+      "programmer" : "sangbeom",
+        "designer" : "han"
+    };
+    document.write("programmer" : "+coworkers.programmer+"<br>");
+    coworkers.bookkeeper = "park"
+    coworkers["data scientist"] = "kim"; > 띄어쓰기를 사용할 때
+    
+    for(var key in coworkers){
+        document.write(key+'<br>');
+        document.write(key + ":" + coworkers[key] + '<br>');
+    }
+</script>
+```
+
+
+
+### 객체와 프로퍼티, 메소드
+
+```html
+<script>
+	coworkers.showAll = function(){
+        for(var key in this){
+            if(key === "programmer"){
+            	document.write(key+ ";" + this[key] + "<br>");
+           }else{
+                document.write("<p>none</p>")
+           }
+        }
+    };
+    coworkers.showAll();
+</script>
+```
+
+
+
+### 활용
+
+```html
+<script>
+	var Body = {
+        setColor:function (color){
+            document.querySelector('body').style.color = color;
+        },
+        setBackgroundColor:function(color){
+            document.querySelector('body').backgroundColor = color;
+        }
+    };
+    
+</script>
+
+	Body.setColor('black');
+```
+
+
+
+## 파일
+
+
+
+* 서로 연관된 코드들을 그룹핑 하여 정리하는 것
+  * 파일을 만들어 스크립트 코드를 넣는다.
+
+```html
+
+<script src="colors.js"></script>
+```
+
+
+
+## 라이브러리, 프레임워크
+
+
+
+* 라이브러리 : 내가 사용할 프로그램의 부품을 가져와서 사용하는 것, jquery를 사용하는데(지금은 안씀)
+* 프레임워크 : 안에 들어가서 작업하는 것
+
+
+
+## UI, API
+
+
+
+* UI : User Interface
+  * 사용자들이 시스템을 제어하기 위해서 조작하는 장치
+* API : Application Programming Interface
+  * 웹 브라우저가 가지고 있는 기능을 프로그래밍 언어를 통해 사용하는 것(개발자)
