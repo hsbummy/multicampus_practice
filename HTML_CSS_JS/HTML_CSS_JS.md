@@ -888,8 +888,11 @@ expression
 * 사용자와 상호작용하면서 동적으로 움직이게 하는 프로그래밍 언어
 
 * <body>
+  
       <script> 태그를 이용해서 js를 사용한다.
-  		
+  
+  ​		
+  
       </script>
   
 
@@ -912,6 +915,157 @@ expression
 ```javascript
 alert('kljwlkjflk'.length)
 ```
+
+
+
+## js를 불러오는 것
+
+
+
+* head + async = 병렬로 js 파일을 불러오는 방법
+
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>document</title>
+        <script asyn src="main.js"></script>
+    </head>
+    <body></body>
+</html>
+```
+
+
+
+* head + defer = html을 불러오면서 다운을 받아 js 파일 실행 (제일 빠르다)
+
+
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>document</title>
+        <script defer src="main.js"></script>
+    </head>
+    <body></body>
+</html>
+```
+
+
+
+* 'use strict'
+  * 선언되지 않는 함수나 변수를 제어해준다.
+* 2. 변수
+
+```javascript
+//2. VARIABLE
+//let (added in ES6)
+
+{
+    let name = 'han';
+    console.log(name);
+    name = 'hello';
+    console.log(name);
+}
+
+console.log(name)
+
+
+// var (don`t ever use this!)
+
+console.log(age);
+age = 4;
+var age;
+console.log(age);
+
+// var hoisting = 어디에 선언했는지 상관없이 항상 제일 위로 끌어올리는 것
+{
+    age = 4;
+    var age;
+}
+console.log(age);
+
+// block scope 이 불가능하다.
+```
+
+* 3. 상수
+
+```javascript
+// 3. constants
+// 변하지 않는 값을 설정해야 한다.
+// 보안 (security)
+// thread safety
+// reduce human mistakes
+
+const daysInWeek = 7;
+const maxNumber = 5;
+```
+
+
+
+* 4. 변수 타입
+
+```javascript
+//4. variable types
+
+let a = 12;
+let b = 1.2;
+
+const infinity = 1 / 0;
+const negativeInfinety = -1 / 0;
+const nan = 'not a number' / 2;
+console.log(infinity);
+console.log(negativeInfinety);
+console.log(nan);
+
+
+const bigInt = 1231238129038128301283021983091n;
+// 최근 추가된 것이고 뒤에 n을 붙여서 표현한다.
+
+//5. string
+
+const char = 'c';
+const brendan = 'brendan'
+console.log(`hi ${brendan}!`)
+console.log(`value: ${brendan}, type: ${typeof brendan}`)
+
+
+//6. boolean
+
+const test = 3 < 1;
+console.log(test)
+
+// 7. null
+
+let nothing = null;
+console.log(nothing)
+
+// 8. symbol 동일한 string 을 작성했어도 다른 값을 보여준다.
+
+const symbol1 = Symbol('id');
+
+// 9. dynamin typing : 동적 타입 언어
+
+let text = 'hello';
+console.log(text.charAt(0));
+console.log(`value: ${text}, type: ${typeof text}`);
+text = 1;
+console.log(`value: ${text}, type: ${typeof text}`);
+text = '7' + 5;
+console.log(`value: ${text}, type: ${typeof text}`);
+text = '8' / '2';
+console.log(`value: ${text}, type: ${typeof text}`);
+console.log(text.charAt(0)); //넘버이기 때문에 오류가 난다.
+```
+
+
 
 
 
@@ -1015,6 +1169,151 @@ else{
 	document.querySelector('#night_day').value='night';
 }
 ```
+
+
+
+* 연산자
+
+```javascript
+//1. string concatenation
+
+console.log('my' + 'cat');
+console.log('1' + 2);
+console.log(`string literals : 1 +2 = ${1 + 2}`);
+console.log("'han's \nbook");
+
+//2. Numeric operators
+
+console.log(1 + 1);
+//- , / , * , % , **
+
+//3. Increment and decrement operators
+
+let counter = 2;
+const preIncrement = ++counter;
+console.log(`preIncrement : ${preIncrement}, counter: ${counter}`);
+const postIncrement = counter++;
+console.log(`postIncrement: ${postIncrement}, counter: ${counter}`);
+
+//4. Assignment operators
+let x = 3;
+let y = 6; 
+x += y; // x = x + y
+
+//5. Comparison operators
+
+// <, >, <=, >=
+
+//6. Logical operators: || (or), && (and), ! (not)
+
+//7. Equality
+
+const stringFive = '5';
+const numberFive = 5;
+
+// == loose equality, with type conversion
+console.log(stringFive == numberFive);
+console.log(stringFive != numberFive);
+
+// === strict equality, no type conversion, 주로 boolean 타입
+console.log(stringFive === numberFive);
+console.log(stringFive !== numberFive);
+
+//object equality
+
+const han1 = {name : 'han'};
+const han2 = {name : 'han'};
+const han3 = han1;
+console.log(han1 == han2);
+console.log(han1 === han2);
+console.log(han1 === han3);
+
+console.log('test');
+
+console.log(0 == false);
+console.log(0 === false);
+console.log('' == false);
+console.log('' === false);
+console.log(null == undefined);
+console.log(null === undefined)
+
+//8. Conditional operators : if
+
+const name = 'ho';
+if (name === 'coder'){
+    console.log('welcome');
+}else if (name === 'han'){
+    console.log('good');
+}else {
+    console.log('bye');
+}
+
+//9. Ternary operator: ?
+console.log(name ==='han'? 'yes': 'no');
+
+//10 . switch statement
+const brower = 'QP';
+switch (brower){
+    case 'IE':
+        console.log('go');
+        break;
+    case 'CH':
+        console.log('ho');
+        break;
+    case 'PH':
+        console.log('hi');
+        break;
+    default:
+        console.log('all');
+        break;
+}
+
+// 11. Loops
+
+let i = 3;
+while (i > 0){
+    console.log(`while: ${i}`);
+    i--;
+}
+
+do{
+    console.log(`do while: ${i}`);
+    i--;
+}while(i>0);
+
+for (i = 3; i > 0; i--){
+    console.log(`for: ${i}`);
+}
+
+for (let i = 3; i > 0; i = i - 2){
+    console.log(`inline: ${i}`);
+}
+
+for (let i = 0; i < 10; i++){
+    for (let j = 0; j < 10; j++){
+        console.log(`i: ${i}, j: ${j}`);
+    }
+}
+
+
+for (let i = 0; i < 11; i++){
+    if (i % 2 === 0){
+        console.log(i)
+    }else{
+        continue
+    }
+}
+
+for (let i = 0; i < 11; i++){
+    if (i === 8){
+        break
+    }else{
+        console.log(i)
+    }
+}
+```
+
+
 
 
 
